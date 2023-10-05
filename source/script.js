@@ -1,9 +1,10 @@
-let version = "3.50.3", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
+let version = "3.50.4(BETA)", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
 window.addEventListener("keydown", move);
 window.addEventListener("keyup", boost);
 
 
 function boost(event){
+    if(godMode == 0){
     if((event.code == "KeyA") && (keyLockA == 1)){
         keyLockA = 0;
     }
@@ -39,9 +40,11 @@ function boost(event){
     }
     else{}
 }
+}
 
 
 function move(e){
+    if(godMode == 0){
     if(e.code == "Space"){
         keyLockSP = 1;
     }
@@ -669,6 +672,7 @@ function move(e){
     document.getElementById("box6").style.top = (y2 - 44) + "px";
     document.getElementById("box6").style.left = (x2 - 10) + "px";
 }
+}
 
 
 function start(){
@@ -723,6 +727,17 @@ function start(){
                         document.getElementById("box").textContent = booster;
                         document.getElementById("status").innerHTML = "HP：" + life + " / 回避できた数：0<br>リセット / Escape";
                         document.getElementById("display").textContent = "HP：" + life;
+                        document.getElementById("display").style.animation = "fadeIn2 1s";
+                        setTimeout(attack, timer);
+                        setTimeout(attack2, timer2);
+                        setTimeout(heal, 1500);
+                        setTimeout(heal2, 1500);
+                        setTimeout(killer, 1500);
+                        setTimeout(blur, 1500);
+                        setTimeout(killer2, 15000);
+                    }
+                    else if(godMode == 1){
+                        document.getElementById("display").textContent = "OBSERVER";
                         document.getElementById("display").style.animation = "fadeIn2 1s";
                         setTimeout(attack, timer);
                         setTimeout(attack2, timer2);
@@ -1428,6 +1443,7 @@ function killer(){
                         document.getElementById("killer").style.display = "block";
                         document.getElementById("killer").style.display = "grid";
                         document.getElementById("killer").textContent = "1";
+                        document.getElementById("status").style.animation = "";
                         document.getElementById("display2").style.animation = "";
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
@@ -1929,11 +1945,16 @@ function destroy(){
                                         fadeIn();
                                     }, 510);
                                 }, 350);
-                                if((((x + 30) <= (t + 80)) && ((y + 30) <= (s + 80)) && (x >= t) && (y >= s)) && (life > 0)){
+                                if(((((x + 30) <= (t + 80)) && ((y + 30) <= (s + 80)) && (x >= t) && (y >= s)) && (life > 0)) || (godMode == 1)){
                                     score ++;
                                     document.getElementById("display").style.color = "#222222";
                                     document.getElementById("display").style.animation = "fadeIn2 2.5s";
-                                    document.getElementById("display").textContent = "HP：" + life;
+                                    if(godMode == 1){
+                                        document.getElementById("display").textContent = "OBSERVER";
+                                    }
+                                    else{
+                                        document.getElementById("display").textContent = "HP：" + life;
+                                    }
                                     if((score % 5) == 0){
                                         document.getElementById("counter").style.animation = "whiteOut3 2s, fadeOut 2s";
                                         document.getElementById("counter").style.display = "block";
@@ -2632,7 +2653,6 @@ function blur(){
                         document.getElementById("blur").style.display = "grid";
                         document.getElementById("blur").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("status").style.animation = "none";
                             document.getElementById("blur").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -4564,11 +4584,46 @@ window.onload = function(){
 }
 
 
+const el = document.getElementById("display3");
+el.addEventListener('click', god);
 let gmdCnt = 0, godMode = 0;
 function god(){
-    gmdCnt ++;
-    if(gmdCnt == 10){
-        godMode = 1;
-        console.log("God mode enabled");
+    if(mode == 0){
+        gmdCnt ++;
+        if(gmdCnt == 10){
+            godMode = 1;
+            console.log("Success! God mode enabled.");
+            document.getElementById("subtitle").style.color = "#0066ff";
+            document.getElementById("subtitle").textContent = "Ovserver mode enabled";
+            document.getElementById("status").innerHTML = "オブザーバーモード（開発者ツール）が有効化されています。開始するには画面をクリックしてください。";
+            x = -30, y = -30;
+        }
+        else if(gmdCnt > 10){}
+        else{
+            console.log("I want your " + (10 - gmdCnt) + " clicks!");
+        }
     }
+}
+const el2 = document.getElementById("body");
+el2.addEventListener('click', observe);
+let gModeStartCnt = 0;
+function observe(){
+    if((godMode == 1) && (gModeStartCnt == 0)){
+        gModeStartCnt ++;
+        document.getElementById("confirm").style.display = "block";
+    }
+}
+const el3 = document.getElementById("gModeStart");
+el3.addEventListener('click', gModeStart);
+function gModeStart(){
+    if(gModeStartCnt == 1){
+        gModeStartCnt ++;
+        document.getElementById("confirm").style.display = "none";
+        start();
+        godModeUpdater();
+    }
+}
+function godModeUpdater(){
+    document.getElementById("status").innerHTML = "オブザーバーモード（開発者ツール）を使用中です。終了するにはページを更新してください。";
+    requestAnimationFrame(godModeUpdater);
 }

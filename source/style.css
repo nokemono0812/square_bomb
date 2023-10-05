@@ -19,12 +19,12 @@
     text-align: center;
     animation: boinboin .5s infinite;
     margin-top: 5px;
-    z-index: 999;
+    color: #ffff00;
 }
 @keyframes boinboin{
-    0%{font-size: 22px;color: #ffff00;}
-    50%{font-size: 24px;color: #ffff00;}
-    100%{font-size: 22px;color: #ffff00;}
+    0%{font-size: 22px;}
+    50%{font-size: 24px;}
+    100%{font-size: 22px;}
 }
 #display3{
     background-color: #00000000;
@@ -685,4 +685,19 @@ animation: noise-2 .2s linear infinite;
 }
 #fadeIn{
     animation: fadeIn2 2.5s;
+}
+#confirm{
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 20px);
+    width: calc(100vw - 20px);
+    background-color: #000000c0;
+    color: #fff;
+    z-index: 999;
+    font-size: 16px;
+    animation: fadeIn2 1s;
+    display: none;
+    text-align: center;
 }
