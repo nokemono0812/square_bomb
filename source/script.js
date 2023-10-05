@@ -722,8 +722,8 @@ function start(){
                     if(mode == 1){
                         document.getElementById("box").textContent = booster;
                         document.getElementById("status").innerHTML = "HP：" + life + " / 回避できた数：0<br>リセット / Escape";
-                        document.getElementById("display").style.animation = "fadeIn2 1s";
                         document.getElementById("display").textContent = "HP：" + life;
+                        document.getElementById("display").style.animation = "fadeIn2 1s";
                         setTimeout(attack, timer);
                         setTimeout(attack2, timer2);
                         setTimeout(heal, 1500);
@@ -737,6 +737,7 @@ function start(){
                         document.getElementById("box3").textContent = booster2;
                         document.getElementById("display").style.animation = "fadeIn2 1s";
                         document.getElementById("display").innerHTML = "<span><div id='hp1'>1P：" + life + "</div><div id='hp2'>2P：" + life2 + "</div></span>";
+                        document.getElementById("display").style.animation = "fadeIn2 1s";
                         document.getElementById("status").innerHTML = "（1P）HP：" + life + " / 回避できた数：" + score + "<br>（2P）HP：" + life2 + " / 回避できた数：" + score2 + "<br>リセット / Escape";
                         setTimeout(attack_2, timer);
                         setTimeout(attack2_2, timer2);
