@@ -1,4 +1,4 @@
-let version = "3.50.1", x = 0, y = 0, x2 = 450, y2 = 450, life = 5, life2 = 5, booster = 5, booster2 = 5, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
+let version = "3.50.2", x = 0, y = 0, x2 = 450, y2 = 450, life = 5, life2 = 5, booster = 5, booster2 = 5, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
 window.addEventListener("keydown", move);
 window.addEventListener("keyup", boost);
 
@@ -735,7 +735,6 @@ function start(){
                     else{
                         document.getElementById("box").textContent = booster;
                         document.getElementById("box3").textContent = booster2;
-                        document.getElementById("display").style.animation = "fadeIn2 1s";
                         document.getElementById("display").innerHTML = "<span><div id='hp1'>1P：" + life + "</div><div id='hp2'>2P：" + life2 + "</div></span>";
                         document.getElementById("display").style.animation = "fadeIn2 1s";
                         document.getElementById("status").innerHTML = "（1P）HP：" + life + " / 回避できた数：" + score + "<br>（2P）HP：" + life2 + " / 回避できた数：" + score2 + "<br>リセット / Escape";
@@ -1429,6 +1428,7 @@ function killer(){
                         document.getElementById("killer").style.display = "block";
                         document.getElementById("killer").style.display = "grid";
                         document.getElementById("killer").textContent = "1";
+                        document.getElementById("display2").style.animation = "";
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
@@ -1870,6 +1870,7 @@ function destroy(){
                         document.getElementById("killer2").style.display = "block";
                         document.getElementById("killer2").style.display = "grid";
                         document.getElementById("killer2").textContent = "1";
+                        document.getElementById("display2").style.animation = "none";
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
@@ -2119,7 +2120,6 @@ function thunder1(){
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
-                            //document.getElementById("display2").style.animation = "none";
                             document.getElementById("thunder1").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2250,7 +2250,6 @@ function thunder2(){
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
-                            //document.getElementById("display2").style.animation = "none";
                             document.getElementById("thunder2").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2381,7 +2380,6 @@ function thunder3(){
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
-                            //document.getElementById("display2").style.animation = "none";
                             document.getElementById("thunder3").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2512,7 +2510,6 @@ function thunder4(){
                         setTimeout(function(){
                             document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
-                            //document.getElementById("display2").style.animation = "none";
                             document.getElementById("thunder4").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2635,9 +2632,7 @@ function blur(){
                         document.getElementById("blur").style.display = "grid";
                         document.getElementById("blur").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
                             document.getElementById("status").style.animation = "none";
-                            //document.getElementById("display2").style.animation = "none";
                             document.getElementById("blur").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -4255,9 +4250,6 @@ function blur_2(){
                         document.getElementById("blur").style.display = "grid";
                         document.getElementById("blur").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
-                            document.getElementById("status").style.animation = "none";
-                            document.getElementById("display2").style.animation = "none";
                             document.getElementById("blur").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
