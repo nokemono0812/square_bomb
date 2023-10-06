@@ -1,4 +1,4 @@
-let version = "3.50.4", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
+let version = "3.50.5(BETA)", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
 window.addEventListener("keydown", move);
 window.addEventListener("keyup", boost);
 
@@ -2139,8 +2139,6 @@ function thunder1(){
                         document.getElementById("thunder1").style.display = "grid";
                         document.getElementById("thunder1").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
-                            document.getElementById("status").style.animation = "none";
                             document.getElementById("thunder1").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2269,8 +2267,6 @@ function thunder2(){
                         document.getElementById("thunder2").style.display = "grid";
                         document.getElementById("thunder2").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
-                            document.getElementById("status").style.animation = "none";
                             document.getElementById("thunder2").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2399,8 +2395,6 @@ function thunder3(){
                         document.getElementById("thunder3").style.display = "grid";
                         document.getElementById("thunder3").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
-                            document.getElementById("status").style.animation = "none";
                             document.getElementById("thunder3").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
@@ -2529,8 +2523,6 @@ function thunder4(){
                         document.getElementById("thunder4").style.display = "grid";
                         document.getElementById("thunder4").textContent = "1";
                         setTimeout(function(){
-                            document.getElementById("body").style.animation = "none";
-                            document.getElementById("status").style.animation = "none";
                             document.getElementById("thunder4").style.display = "none";
                             setTimeout(function(){
                                 if(sound == 0){
