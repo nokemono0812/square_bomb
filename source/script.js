@@ -1,4 +1,4 @@
-let version = "3.50.5", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
+let version = "3.50.6(BETA)", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
 window.addEventListener("keydown", move);
 window.addEventListener("keyup", boost);
 
@@ -723,6 +723,7 @@ function start(){
                     boosterLock = 0;
                     let timer = Math.round(Math.random()*300) + 200;
                     let timer2 = Math.round(Math.random()*7000);
+                    let timer3 = Math.round(Math.random()*7000) + 3000;
                     if(mode == 1){
                         document.getElementById("box").textContent = booster;
                         document.getElementById("status").innerHTML = "HP：" + life + " / 回避できた数：0<br>リセット / Escape";
@@ -730,6 +731,7 @@ function start(){
                         document.getElementById("display").style.animation = "fadeIn2 1s";
                         setTimeout(attack, timer);
                         setTimeout(attack2, timer2);
+                        setTimeout(attack3, timer3);
                         setTimeout(heal, 1500);
                         setTimeout(heal2, 1500);
                         setTimeout(killer, 1500);
@@ -741,6 +743,7 @@ function start(){
                         document.getElementById("display").style.animation = "fadeIn2 1s";
                         setTimeout(attack, timer);
                         setTimeout(attack2, timer2);
+                        setTimeout(attack3, timer3);
                         setTimeout(heal, 1500);
                         setTimeout(heal2, 1500);
                         setTimeout(killer, 1500);
@@ -1182,6 +1185,197 @@ function attack2(){
                                         if((life > 0) && (destroyMode != 1)){
                                             let time = Math.round(Math.random()*3000) + 1000;
                                             setTimeout(attack2, time);
+                                        }
+                                    }, timing);
+                                }, timing);
+                            }, timing);
+                        }, timing);
+                    }, timing);
+                }, timing);
+            }, timing);
+        }, timing);
+    }else{}
+}
+
+
+let x3, y3;
+function attack3(){
+    if((life > 0) && (destroyMode != 1)){
+        document.getElementById("attack3").style.backgroundColor = "#00000000";
+        let timing = Math.round(Math.random()*50) + 70;
+        x3 = x - 35;
+        y3 = y - 35;
+        document.getElementById("attack3").style.top = y3 + "px";
+        document.getElementById("attack3").style.left = x3 + "px";
+        if(sound == 0){
+            document.getElementById("a23").pause();
+            document.getElementById("a23").currentTime = 0;
+            document.getElementById("a23").play();
+        }
+        document.getElementById("attack3").textContent = "3";
+        document.getElementById("attack3").style.display = "block";
+        document.getElementById("attack3").style.display = "grid";
+        setTimeout(function(){
+            document.getElementById("attack3").style.display = "none";
+            setTimeout(function(){
+                if(sound == 0){
+                    document.getElementById("a23").pause();
+                    document.getElementById("a23").currentTime = 0;
+                    document.getElementById("a23").play();
+                }
+                document.getElementById("attack3").textContent = "2";
+                document.getElementById("attack3").style.display = "block";
+                document.getElementById("attack3").style.display = "grid";
+                setTimeout(function(){
+                    document.getElementById("attack3").style.display = "none";
+                    setTimeout(function(){
+                        if(sound == 0){
+                            document.getElementById("a23").pause();
+                            document.getElementById("a23").currentTime = 0;
+                            document.getElementById("a23").play();
+                        }
+                        document.getElementById("attack3").textContent = "1";
+                        document.getElementById("attack3").style.display = "block";
+                        document.getElementById("attack3").style.display = "grid";
+                        setTimeout(function(){
+                            document.getElementById("attack3").style.display = "none";
+                            setTimeout(function(){
+                                if(sound == 0){
+                                    document.getElementById("a24").pause();
+                                    document.getElementById("a24").currentTime = 0;
+                                    document.getElementById("a24").play();
+                                }
+                                document.getElementById("attack3").style.backgroundColor = "#ff0000";
+                                document.getElementById("attack3").style.display = "block";
+                                document.getElementById("attack3").style.display = "grid";
+                                document.getElementById("attack3").textContent = "!";
+                                if(((x + 30) >= x3) && ((y + 30) >= y3) && (x <= (x3 + 100)) && (y <= (y3 + 100))){
+                                    life --;
+                                    if(life > 0){
+                                        if(sound != 2){
+                                            document.getElementById("a8").pause();
+                                            document.getElementById("a8").currentTime = 0;
+                                            document.getElementById("a8").play();
+                                        }
+                                        document.getElementById("status").innerHTML = "HP：" + life + " / 回避できた数：" + score + "<br>リセット / Escape";
+                                        clearTimeout(timeout);
+                                        if(destroyMode == 0){
+                                            document.getElementById("display").style.animation = "damege .9s";
+                                            animationReset();
+                                        }
+                                        document.getElementById("display").textContent = "HP：" + life;
+                                    }
+                                    if(life == 0){
+                                        if(sound != 2){
+                                            document.getElementById("a11").pause();
+                                            document.getElementById("a11").currentTime = 0;
+                                            document.getElementById("a11").play();
+                                            document.getElementById("a7").pause();
+                                            document.getElementById("a7").currentTime = 0;
+                                            document.getElementById("a5").pause();
+                                            document.getElementById("a5").currentTime = 0;
+                                            document.getElementById("a5").play();
+                                        }
+                                        boosterLock = 1;
+                                        clearTimeout(timeout);
+                                        let comment = Math.round(Math.random()*1000);
+                                        if(comment < 10){
+                                            comment = "実はこれ 当たっても特にいいことないよ（レア度：超激レア）";
+                                        }
+                                        else if(comment < 20){
+                                            comment = "逃げちゃダメだ 逃げちゃダメだ 逃げty...（レア度：超激レア）";
+                                        }
+                                        else if(comment < 50){
+                                            comment = "......（ネタ切れ）（レア度：激レア）";
+                                        }
+                                        else if(comment < 80){
+                                            comment = "ちなみにこのコメントが出る確率は3%です（レア度：激レア）";
+                                        }
+                                        else if(comment < 110){
+                                            comment = "トマト嫌いな人とは分かりあえる気がしない（レア度：激レア）";
+                                        }
+                                        else if(comment < 260){
+                                            comment = "遊ぶときはJavaScriptを有効にしてね！（遅い）（レア度：レア）";
+                                        }
+                                        else if(comment < 310){
+                                            comment = "あしぃーたがあぁーるぅーさあぁー ♪（レア度：レア）";
+                                        }
+                                        else if(comment < 360){
+                                            comment = "正直このコメントいらないよな（レア度：レア）";
+                                        }
+                                        else if(comment < 410){
+                                            comment = "赤い爆発が高確率で四隅に出現するの あなたの運が悪いだけです（レア度：レア）";
+                                        }
+                                        else if(comment < 510){
+                                            comment = "中央付近で立ち回るといいかも！（レア度：コモン）";
+                                        }
+                                        else if(comment < 610){
+                                            comment = "さあ もう一回どうだい？（レア度：コモン）";
+                                        }
+                                        else if(comment < 710){
+                                            comment = "瞬間移動を使いこなすことが大切！（レア度：コモン）";
+                                        }
+                                        else if(comment < 810){
+                                            comment = "ピンクの爆発に当たると一発アウト！（レア度：コモン）";
+                                        }
+                                        else if(comment < 910){
+                                            comment = "ありゃ... そういう日もある（レア度：コモン）";
+                                        }
+                                        else{
+                                            comment = "諦めたらそこで試合終了ですよ？（レア度：顧問）";
+                                        }
+                                        document.getElementById("status").innerHTML = comment + "<br>回避できた数：" + score + "<br>リセット / Escape";
+                                        document.getElementById("display").style.animation = "red 1.8s infinite";
+                                        document.getElementById("display").textContent = "CRASHED";
+                                        setTimeout(function(){
+                                            document.getElementById("box").style.display = "none";
+                                            setTimeout(function(){
+                                                document.getElementById("box").style.display = "block";
+                                                document.getElementById("box").style.display = "grid";
+                                                setTimeout(function(){
+                                                    document.getElementById("box").style.display = "none";
+                                                    setTimeout(function(){
+                                                        document.getElementById("box").style.display = "block";
+                                                        document.getElementById("box").style.display = "grid";
+                                                        setTimeout(function(){
+                                                            document.getElementById("box").style.display = "none";
+                                                            setTimeout(function(){
+                                                                document.getElementById("box").style.display = "block";
+                                                                document.getElementById("box").style.display = "grid";
+                                                                setTimeout(function(){
+                                                                    document.getElementById("box").style.display = "none";
+                                                                    setTimeout(function(){
+                                                                        document.getElementById("box").style.display = "block";
+                                                                        document.getElementById("box").style.display = "grid";
+                                                                        setTimeout(function(){
+                                                                            document.getElementById("box").style.display = "none";
+                                                                        }, 100);
+                                                                    }, 100);
+                                                                }, 100);
+                                                            }, 100);
+                                                        }, 100);
+                                                    }, 100);
+                                                }, 100);
+                                            }, 100);
+                                        }, 100);
+                                    }
+                                }
+                                else if(life > 0){
+                                    score ++;
+                                    if((score % 5) == 0){
+                                        document.getElementById("counter").style.display = "block";
+                                        document.getElementById("counter").style.display = "grid";
+                                        document.getElementById("counter").textContent = score;
+                                        erase();
+                                    }
+                                    document.getElementById("status").innerHTML = "HP：" + life + " / 回避できた数：" + score + "<br>リセット / Escape";
+                                }
+                                setTimeout(function(){
+                                    document.getElementById("attack3").style.display = "none";
+                                    setTimeout(function(){
+                                        if((life > 0) && (destroyMode != 1)){
+                                            let time = Math.round(Math.random()*7000) + 3000;
+                                            setTimeout(attack3, time);
                                         }
                                     }, timing);
                                 }, timing);
@@ -1862,7 +2056,7 @@ function destroy(){
                     document.getElementById("a36").currentTime = 0;
                     document.getElementById("a36").play();
                 }
-            }, 400);
+            }, 700);
             setTimeout(function(){
                 if(sound == 0){
                     document.getElementById("a19").currentTime = 0;
@@ -1973,6 +2167,8 @@ function destroy(){
                                     let timer2 = Math.round(Math.random()*1750);
                                     setTimeout(attack, timer + 750);
                                     setTimeout(attack2, timer2 + 750);
+                                    let timer3 = Math.round(Math.random()*7000) + 3000;
+                                    setTimeout(attack3, timer3);
                                     setTimeout(heal, 1500);
                                     setTimeout(heal2, 1500);
                                     setTimeout(killer, 1500);
@@ -2096,7 +2292,7 @@ function destroy(){
 function thunder1(){
     if(life > 0){
         document.getElementById("thunder1").style.backgroundColor = "#00000000";
-        let timing = Math.round(Math.random()*75) + 150;
+        let timing = Math.round(Math.random()*100) + 120;
         let rdm = Math.round(Math.random()*80);
         if(rdm < 50){
             u = 10;
@@ -2224,7 +2420,7 @@ function thunder1(){
 function thunder2(){
     if(life > 0){
         document.getElementById("thunder2").style.backgroundColor = "#00000000";
-        let timing = Math.round(Math.random()*75) + 150;
+        let timing = Math.round(Math.random()*100) + 120;
         let rdm = Math.round(Math.random()*80);
         if(rdm < 50){
             w = 140;
@@ -2352,7 +2548,7 @@ function thunder2(){
 function thunder3(){
     if(life > 0){
         document.getElementById("thunder3").style.backgroundColor = "#00000000";
-        let timing = Math.round(Math.random()*75) + 150;
+        let timing = Math.round(Math.random()*100) + 120;
         let rdm = Math.round(Math.random()*80);
         if(rdm < 50){
             z = 140;
@@ -2480,7 +2676,7 @@ function thunder3(){
 function thunder4(){
     if(life > 0){
         document.getElementById("thunder4").style.backgroundColor = "#00000000";
-        let timing = Math.round(Math.random()*75) + 150;
+        let timing = Math.round(Math.random()*100) + 120;
         let rdm = Math.round(Math.random()*80);
         if(rdm < 50){
             z3 = 10;
