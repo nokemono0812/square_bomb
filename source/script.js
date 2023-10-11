@@ -1,4 +1,4 @@
-let version = "3.50.7", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
+let version = "3.50.8(BETA)", x = 0, y = 0, x2 = 450, y2 = 450, life = 10, life2 = 10, booster = 10, booster2 = 10, boosterLock = 1, score = 0, score2 = 0, lock = -1, mode = 0, size = 200, keyLockA = 0, keyLockW = 0, keyLockD = 0, keyLockS = 0, keyLockAL = 0, keyLockAU = 0, keyLockAR = 0, keyLockAD = 0, keyLockSP = 0, keyLockP = 0, keyLockE = 0, sound = 0, onBlur = 0, onBlur2 = 0, timeout, timeout2, timeout3, timeout4, timeout5, timeout6, timeout7, softkey = 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, w2, z, z2, z3, z4, destroyMode = 0;
 window.addEventListener("keydown", move);
 window.addEventListener("keyup", boost);
 
@@ -1202,7 +1202,7 @@ let x3, y3;
 function attack3(){
     if((life > 0) && (destroyMode != 1)){
         document.getElementById("attack3").style.backgroundColor = "#00000000";
-        let timing = Math.round(Math.random()*40) + 60;
+        let timing = Math.round(Math.random()*50) + 70;
         x3 = x - 35;
         y3 = y - 35;
         document.getElementById("attack3").style.top = y3 + "px";
